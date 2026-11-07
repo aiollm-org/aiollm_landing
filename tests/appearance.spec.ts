@@ -217,3 +217,42 @@ test('commands, code, and code tabs stay fully visible without horizontal scroll
     ).toBe(true);
   }
 });
+
+test('the hexagon under the mouse lights up and the gradient follows it', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const hero = page.locator('.hero');
+  const box = (await hero.boundingBox())!;
+  // Points in the first screen, which on a phone is only the top of the hero.
+  const top = box.y + 120;
+  await page.mouse.move(box.x + box.width * 0.15, top);
+  await expect(hero).toHaveAttribute('data-pointer', 'on');
+  const lit = page.locator('.hero-cell.is-on');
+  await expect(lit).toHaveCount(1);
+  await expect
+    .poll(() => lit.evaluate((element) => getComputedStyle(element).transform))
+    .toMatch(/^matrix\(1\.2/);
+  const mix = () =>
+    hero.evaluate((element) => element.style.getPropertyValue('--hero-mix'));
+  const left = await mix();
+  await page.mouse.move(box.x + box.width * 0.9, top + 60);
+  await expect.poll(mix).not.toBe(left);
+  await expect(lit).toHaveCount(1);
+  await page.mouse.move(box.x + box.width / 2, box.y - 20);
+  await expect(hero).not.toHaveAttribute('data-pointer', 'on');
+  await expect(page.locator('.hero-cell.is-on')).toHaveCount(0);
+});
+
+test('the hero ignores the mouse when motion is reduced', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const hero = page.locator('.hero');
+  const box = (await hero.boundingBox())!;
+  await page.mouse.move(box.x + box.width * 0.3, box.y + 120);
+  await page.mouse.move(box.x + box.width * 0.6, box.y + 180);
+  await expect(page.locator('.hero-cells')).toBeHidden();
+  await expect(hero).not.toHaveAttribute('data-pointer', 'on');
+  await expect(page.locator('.hero-cell.is-on')).toHaveCount(0);
+});
