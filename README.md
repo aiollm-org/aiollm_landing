@@ -11,9 +11,9 @@ npm ci
 npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000). The App Router entry points are `src/app/[locale]/layout.tsx` and `src/app/[locale]/page.tsx`. All nine sections, including the hero copy, are Server Components. Small client boundaries provide Motion, code tabs, the theme menu, and clipboard behavior. The layout reads a theme cookie, so Next.js renders the page on each request with the saved appearance already applied.
+Open [localhost:3000](http://localhost:3000). The App Router entry points are `src/app/[locale]/layout.tsx` and `src/app/[locale]/page.tsx`. All ten sections, including the hero copy, are Server Components. Small client boundaries provide Motion, code tabs, the theme menu, and clipboard behavior. The layout reads a theme cookie, so Next.js renders the page on each request with the saved appearance already applied.
 
-- `src/sections/`: the nine landing-page sections, including installation, shared generation, checked streaming, and FAQ content.
+- `src/sections/`: the ten landing-page sections, including installation, shared generation, tools, checked streaming, and FAQ content.
 - `src/components/`: branding, navigation, code display, theme state, decorative hero layers, and interactions.
 - `src/components/ui/`: shadcn/ui Button, Tabs, and DropdownMenu from the official registry, styled for this page. Radix primitives supply keyboard and ARIA behavior.
 - `src/data/examples.ts`: displayed Python snippets and install command.
@@ -102,10 +102,11 @@ Setup references: [Next.js](https://nextjs.org/docs/app/getting-started/installa
 
 ## Content sources
 
-Reviewed on 2026-11-06 against aiollm **0.9.0**. Content is a maintained snapshot, not fetched from upstream at runtime.
+Reviewed on 2026-11-07 against aiollm **0.10.0**. Content is a maintained snapshot, not fetched from upstream at runtime.
 
 - [README](https://github.com/GrehBan/aiollm#readme), [package metadata](https://github.com/GrehBan/aiollm/blob/master/src/aiollm/__meta__.py), and [release notes](https://grehban.github.io/aiollm/changelog/) establish the version, Python requirement, source installation, and pre-alpha status.
 - [Shared generation](https://grehban.github.io/aiollm/guide/generation/) and [field mapping](https://grehban.github.io/aiollm/unification/) establish conversations, effort, structured output, reasoning summaries, and provider-specific limits. Structured output is JSON text, not a locally parsed Pydantic response.
+- [Tools](https://grehban.github.io/aiollm/guide/tools/) establishes function tools, tool loops, and streamed tool calls; the 0.10.0 release notes establish the generated provider types.
 - [Streaming](https://grehban.github.io/aiollm/guide/streaming/), [errors](https://grehban.github.io/aiollm/guide/errors/), and [uploads](https://grehban.github.io/aiollm/guide/uploads/) establish terminal checks, bounded retries, and one-shot source behavior.
 - [Provider clients](https://grehban.github.io/aiollm/guide/providers/), [extending](https://grehban.github.io/aiollm/guide/extending/), and [design](https://grehban.github.io/aiollm/guide/design/) establish scope, session ownership, extension points, and limitations.
 

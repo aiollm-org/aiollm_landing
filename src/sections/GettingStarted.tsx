@@ -63,6 +63,7 @@ export function GettingStarted({ copy }: { copy: Dictionary['start'] }) {
             </p>
             <div className="mt-4 grid gap-2 text-sm font-medium">
               <a href="#generation">{copy.generation}</a>
+              <a href="#tools">{copy.tools}</a>
               <a href="#streaming">{copy.streaming}</a>
               <a href={`${project.docs}guide/methods/`}>{copy.api}</a>
             </div>

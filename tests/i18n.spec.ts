@@ -21,6 +21,7 @@ test('Russian content, metadata, FAQ, and language links are server rendered wit
       ['getting-started', ru.start.title],
       ['features', ru.features.title],
       ['generation', ru.generation.title],
+      ['tools', ru.tools.title],
       ['flow', ru.flow.title],
       ['providers', ru.providers.title],
       ['streaming', ru.streaming.title],

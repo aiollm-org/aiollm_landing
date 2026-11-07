@@ -7,6 +7,7 @@ import { Documentation } from '@/sections/Documentation';
 import { GettingStarted } from '@/sections/GettingStarted';
 import { SharedGeneration } from '@/sections/SharedGeneration';
 import { Streaming } from '@/sections/Streaming';
+import { Tools } from '@/sections/Tools';
 import { FAQ } from '@/sections/FAQ';
 import { getLandingStructuredData, serializeJsonLd } from '@/lib/seo';
 import { getDictionary } from '@/data/i18n';
@@ -38,6 +39,7 @@ export default async function HomePage({
         <GettingStarted copy={copy.start} />
         <Features copy={copy.features} />
         <SharedGeneration copy={copy.generation} />
+        <Tools copy={copy.tools} />
         <RequestFlow copy={copy.flow} />
         <Providers copy={copy.providers} />
         <Streaming copy={copy.streaming} />

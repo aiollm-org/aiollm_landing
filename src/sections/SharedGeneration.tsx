@@ -31,10 +31,7 @@ export function SharedGeneration({ copy }: { copy: Dictionary['generation'] }) {
           </div>
           <figure className="min-w-0 overflow-hidden rounded-[14px] border border-code-line bg-code-bg">
             <figcaption className="border-b border-code-line px-[22px] py-3 font-mono text-xs text-code-dim">
-              structured_output.py{' '}
-              <span className="float-right">
-                {copy.new} {project.version}
-              </span>
+              structured_output.py
             </figcaption>
             <pre className="overflow-x-auto px-[22px] py-5 text-[13px] leading-[1.7] text-code-ink">
               <CodeBlock id="structured-example" code={structuredExample} />

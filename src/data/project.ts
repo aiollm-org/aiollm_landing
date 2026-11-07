@@ -1,11 +1,11 @@
-// Reviewed against the repository, 0.9.0 release notes, and published guides on 2026-11-06.
+// Reviewed against the repository, 0.10.0 release notes, and published guides on 2026-11-07.
 export const project = {
-  version: '0.9.0',
+  version: '0.10.0',
   python: '3.13+',
   repository: 'https://github.com/GrehBan/aiollm',
   landing: 'https://aiollm.dev',
   docs: 'https://docs.aiollm.dev/',
-  reviewedOn: '2026-11-06',
+  reviewedOn: '2026-11-07',
 } as const;
 
 export const documentationPages = [
@@ -49,6 +49,12 @@ export const documentationPages = [
     path: 'guide/generation/',
     description:
       'Conversations, structured output, effort, and shared stream events.',
+  },
+  {
+    title: 'Tools',
+    path: 'guide/tools/',
+    description:
+      'Function tools for any provider: calls, results, reasoning, and streaming.',
   },
   {
     title: 'Resources and use cases',
@@ -102,6 +108,13 @@ export const providerMappings = [
   ['effort', 'reasoning.effort', 'output_config.effort'],
   ['output_schema', 'text.format', 'output_config.format'],
   ['end_user_id', 'safety_identifier', 'metadata.user_id'],
+  ['tools', 'tools (function tools)', 'tools (custom tools)'],
+  ['tool_choice', 'tool_choice', 'tool_choice (REQUIRED as any)'],
+  [
+    'parallel_tool_calls',
+    'parallel_tool_calls',
+    'tool_choice.disable_parallel_tool_use',
+  ],
 ] as const;
 
 export const faqEntries = [
@@ -116,6 +129,12 @@ export const faqEntries = [
     answer:
       'No. Opening a retryable stream may be retried, but a failure after it starts reaches your code. Streams are neither automatically resumed nor replayed, so your application does not receive duplicated output.',
     path: 'guide/streaming/',
+  },
+  {
+    question: 'Does aiollm run my tools for me?',
+    answer:
+      'No. The model returns tool calls, and your code runs them and sends the results back in the conversation. The loop is yours to shape: how many rounds, what to do with a failing tool, and whether to run calls in parallel.',
+    path: 'guide/tools/',
   },
   {
     question: 'What is the difference between an omitted value and null?',

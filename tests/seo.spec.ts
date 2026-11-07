@@ -65,11 +65,12 @@ test('canonical, hreflang, social metadata, and JSON-LD are in server HTML', asy
     );
     // Actual DOM, with scripts disabled: serialized React payload alone does not pass.
     await expect(page.locator('main h1')).toBeVisible();
-    await expect(page.locator('main h2')).toHaveCount(8);
+    await expect(page.locator('main h2')).toHaveCount(9);
     for (const id of [
       'getting-started',
       'features',
       'generation',
+      'tools',
       'flow',
       'providers',
       'streaming',

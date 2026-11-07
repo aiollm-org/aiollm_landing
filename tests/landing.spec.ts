@@ -31,10 +31,10 @@ test('renders every section, correct logo, responsive grids, and highlighted exa
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Typed, async clients',
   );
-  await expect(page.locator('main section')).toHaveCount(9);
+  await expect(page.locator('main section')).toHaveCount(10);
   await expect(page.locator('#features article')).toHaveCount(6);
   await expect(page.locator('#flow li')).toHaveCount(6);
-  await expect(page.locator('#docs .doc')).toHaveCount(10);
+  await expect(page.locator('#docs .doc')).toHaveCount(11);
   await expect(page.locator('#code .hljs-keyword').first()).toBeVisible();
   await expect(
     page.locator('#any-provider .hljs-keyword').first(),
@@ -98,7 +98,7 @@ test('presents the verified release, installation, shared fields, and streaming 
   page,
 }) => {
   await page.goto('/');
-  await expect(page.locator('header .pill')).toHaveText('v0.9.0');
+  await expect(page.locator('header .pill')).toHaveText('v0.10.0');
   await expect(page.locator('#getting-started')).toContainText('not on PyPI');
   await expect(page.locator('#getting-started .setup-terminal')).toContainText(
     'uv sync',
@@ -119,7 +119,13 @@ test('presents the verified release, installation, shared fields, and streaming 
     'APIStreamInterruptedError',
   );
   await expect(page.locator('#docs')).toContainText(
-    'replaces shared metadata with end_user_id',
+    'adds function tools to the shared API',
+  );
+  await expect(page.locator('#tools-example')).toContainText(
+    'ToolResult(call_id=call.id, output=output)',
+  );
+  await expect(page.locator('#generation table')).toContainText(
+    'tool_choice.disable_parallel_tool_use',
   );
   for (const title of [
     'Uploads',
@@ -140,7 +146,7 @@ test('presents the verified release, installation, shared fields, and streaming 
 
 test('FAQ answers expand and collapse by keyboard', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('#faq details')).toHaveCount(6);
+  await expect(page.locator('#faq details')).toHaveCount(7);
   const details = page.locator('#faq details').first();
   const summary = details.locator('summary');
   await expect(details.locator('p')).toBeHidden();

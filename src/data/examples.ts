@@ -81,3 +81,52 @@ async def stream_answer(
 
         # The final event includes usage and stop details.
         return await events.final()`;
+
+export const toolsExample = `import json
+from typing import Any
+
+from aiollm import (
+    GenerationResponse,
+    IGenerationClient,
+    InputItem,
+    Tool,
+    ToolResult,
+    Turn,
+)
+
+WEATHER = Tool(
+    name="get_weather",
+    description="Current weather in a city.",
+    parameters={
+        "type": "object",
+        "properties": {"city": {"type": "string"}},
+        "required": ["city"],
+        "additionalProperties": False,
+    },
+    strict=True,
+)
+
+
+def get_weather(city: str) -> str:
+    return json.dumps({"city": city, "celsius": 15})
+
+
+async def ask_with_tools(
+    client: IGenerationClient,
+    model: str,
+    question: str,
+) -> GenerationResponse[Any]:
+    conversation: list[InputItem] = [Turn.user(question)]
+    while True:
+        response = await client.generation.create(
+            model=model, input=conversation, tools=[WEATHER]
+        )
+        if not response.tool_calls:
+            return response
+        conversation.append(response.to_turn())
+        for call in response.tool_calls:
+            arguments = call.parse_arguments()
+            output = get_weather(str(arguments["city"]))
+            conversation.append(
+                ToolResult(call_id=call.id, output=output)
+            )`;

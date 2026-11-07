@@ -18,7 +18,7 @@ export const en = {
   seo: {
     title: 'aiollm — Typed, async Python clients for AI APIs',
     description:
-      'Build typed, async Python clients with Pydantic and aiohttp. Explore shared OpenAI and Anthropic generation, checked streaming, and declarative API methods.',
+      'Build typed, async Python clients with Pydantic and aiohttp. Explore shared OpenAI and Anthropic generation with tool calls, checked streaming, and declarative API methods.',
   },
   nav: {
     home: 'aiollm home',
@@ -96,6 +96,7 @@ export const en = {
     callDescription:
       'Use `client.generation` for a shared text API, native provider methods for their exact fields, or declare your own HTTP endpoint.',
     generation: 'Explore shared generation →',
+    tools: 'Let the model call your functions →',
     streaming: 'Work with checked streams →',
     api: 'Describe your own API ↗',
   },
@@ -141,7 +142,7 @@ export const en = {
     label: 'Shared generation',
     title: 'One request shape. The provider’s details still intact.',
     description:
-      'Pass keyword arguments or a GenerationRequest to create() or stream(). The same calling code works with either built-in client through IGenerationClient.',
+      'Pass keyword arguments or a GenerationRequest to create() or stream(). The same calling code works with either built-in client through IGenerationClient, tools included.',
     capabilities,
     new: 'New in',
     response:
@@ -152,6 +153,38 @@ export const en = {
     limits: 'Full field mapping and provider limits ↗',
     reasoning:
       'Reasoning summaries are available when requested with the provider’s typed options. Shared streams expose them as `ReasoningDeltaEvent`; `events.text()` returns only text deltas. Invalid provider options raise `RequestValidationError` before anything is sent.',
+  },
+  tools: {
+    label: 'Tools',
+    title: 'Let the model call your functions, with any provider',
+    description:
+      'Describe your functions once as tools. The model answers with calls, your code runs them, and the results go back in the conversation until the model answers in text.',
+    new: 'New in',
+    caption:
+      'The loop is yours: aiollm sends the calls and results, it never runs your functions.',
+    items: [
+      {
+        title: 'A tool is a name, a description, and a schema',
+        description:
+          'A `Tool` holds a JSON Schema for its arguments; with `strict=True` the arguments follow it exactly. `tool_choice` picks `AUTO`, `NONE`, `REQUIRED`, or one `ForcedTool`.',
+      },
+      {
+        title: 'Calls and results in the conversation',
+        description:
+          '`response.tool_calls` lists each `ToolCall`, and `parse_arguments()` gives its arguments. `to_turn()` and a `ToolResult` per call continue the conversation; a call without its result is refused before sending.',
+      },
+      {
+        title: 'Reasoning comes back with the calls',
+        description:
+          'The turn of calls keeps the provider’s own output, OpenAI’s reasoning items or Anthropic’s signed thinking, so the same provider continues from its own reasoning.',
+      },
+      {
+        title: 'Calls arrive while streaming',
+        description:
+          '`stream()` yields `ToolCallStartEvent`, `ToolCallDeltaEvent`, and `ToolCallDoneEvent` for each call, so a tool can start before the response ends.',
+      },
+    ],
+    guide: 'Read the tools guide ↗',
   },
   flow: {
     label: 'Request flow',
@@ -191,7 +224,7 @@ export const en = {
     label: 'Providers',
     title: 'Two providers today, one generation API',
     description:
-      '`client.generation` takes the same request for every provider and returns shared types, with the provider’s own response kept in `raw`.',
+      '`client.generation` takes the same request for every provider and returns shared types, with the provider’s own response kept in `raw`. Each provider’s own types are generated from its schema.',
     openai: 'Reads `OPENAI_API_KEY`; quota errors are typed and never retried.',
     anthropic:
       'Reads `ANTHROPIC_API_KEY`; a 529 overload is a transient error.',
@@ -242,7 +275,7 @@ export const en = {
       'Follow the guides for the contracts, then use the generated reference for every public type and method.',
     releaseTitle: 'Pre-alpha: new capabilities, an evolving public API',
     releaseBefore:
-      'Version 0.9.0 adds effort controls, structured output, and reasoning summaries. It also replaces shared metadata with end_user_id. Before 1.0, breaking changes bump the minor version: 0.9 is followed by 0.10. Read the ',
+      'Version 0.10.0 adds function tools to the shared API: tools and tool_choice in the request, tool calls in responses and streams, and tool results in the conversation. Provider types are now generated from the providers’ schemas, and some of them are renamed. Before 1.0, breaking changes bump the minor version: 0.10 is followed by 0.11. Read the ',
     releaseNotes: 'release notes',
     between: ' and ',
     versioning: 'versioning policy',
