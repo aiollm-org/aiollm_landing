@@ -206,7 +206,7 @@ test('copies only the install command and resets feedback', async ({
   await button.click();
   await expect(button).toHaveText('Copied');
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
-    'pip install git+https://github.com/GrehBan/aiollm.git',
+    'pip install git+https://github.com/aiollm-org/aiollm.git',
   );
   await expect(button).toHaveText('Copy');
 });
@@ -230,7 +230,7 @@ for (const failure of ['unavailable', 'rejected'] as const) {
     await page.locator('#copy-install').click();
     await expect(page.locator('#copy-install')).toHaveText('Selected');
     expect(await page.evaluate(() => window.getSelection()?.toString())).toBe(
-      'pip install git+https://github.com/GrehBan/aiollm.git',
+      'pip install git+https://github.com/aiollm-org/aiollm.git',
     );
   });
 }

@@ -1,6 +1,6 @@
 # aiollm landing page
 
-The landing page for [aiollm](https://github.com/GrehBan/aiollm), built with Next.js App Router, React, TypeScript, Tailwind CSS, Motion, and shadcn/ui.
+The landing page for [aiollm](https://github.com/aiollm-org/aiollm), built with Next.js App Router, React, TypeScript, Tailwind CSS, Motion, and shadcn/ui.
 
 ## Development
 
@@ -104,10 +104,10 @@ Setup references: [Next.js](https://nextjs.org/docs/app/getting-started/installa
 
 Reviewed on 2026-11-07 against aiollm **0.10.0**. Content is a maintained snapshot, not fetched from upstream at runtime.
 
-- [README](https://github.com/GrehBan/aiollm#readme), [package metadata](https://github.com/GrehBan/aiollm/blob/master/src/aiollm/__meta__.py), and [release notes](https://grehban.github.io/aiollm/changelog/) establish the version, Python requirement, source installation, and pre-alpha status.
-- [Shared generation](https://grehban.github.io/aiollm/guide/generation/) and [field mapping](https://grehban.github.io/aiollm/unification/) establish conversations, effort, structured output, reasoning summaries, and provider-specific limits. Structured output is JSON text, not a locally parsed Pydantic response.
-- [Tools](https://grehban.github.io/aiollm/guide/tools/) establishes function tools, tool loops, and streamed tool calls; the 0.10.0 release notes establish the generated provider types.
-- [Streaming](https://grehban.github.io/aiollm/guide/streaming/), [errors](https://grehban.github.io/aiollm/guide/errors/), and [uploads](https://grehban.github.io/aiollm/guide/uploads/) establish terminal checks, bounded retries, and one-shot source behavior.
-- [Provider clients](https://grehban.github.io/aiollm/guide/providers/), [extending](https://grehban.github.io/aiollm/guide/extending/), and [design](https://grehban.github.io/aiollm/guide/design/) establish scope, session ownership, extension points, and limitations.
+- [README](https://github.com/aiollm-org/aiollm#readme), [package metadata](https://github.com/aiollm-org/aiollm/blob/master/src/aiollm/__meta__.py), and [release notes](https://aiollm-org.github.io/aiollm/changelog/) establish the version, Python requirement, source installation, and pre-alpha status.
+- [Shared generation](https://aiollm-org.github.io/aiollm/guide/generation/) and [field mapping](https://aiollm-org.github.io/aiollm/unification/) establish conversations, effort, structured output, reasoning summaries, and provider-specific limits. Structured output is JSON text, not a locally parsed Pydantic response.
+- [Tools](https://aiollm-org.github.io/aiollm/guide/tools/) establishes function tools, tool loops, and streamed tool calls; the 0.10.0 release notes establish the generated provider types.
+- [Streaming](https://aiollm-org.github.io/aiollm/guide/streaming/), [errors](https://aiollm-org.github.io/aiollm/guide/errors/), and [uploads](https://aiollm-org.github.io/aiollm/guide/uploads/) establish terminal checks, bounded retries, and one-shot source behavior.
+- [Provider clients](https://aiollm-org.github.io/aiollm/guide/providers/), [extending](https://aiollm-org.github.io/aiollm/guide/extending/), and [design](https://aiollm-org.github.io/aiollm/guide/design/) establish scope, session ownership, extension points, and limitations.
 
 Refresh the README, package version, release notes, and relevant implementation together: older guide examples can predate a release. Update `project.ts` and the behavior tests together. Python examples are display snippets checked for syntax; browser tests do not execute provider calls or verify live models.

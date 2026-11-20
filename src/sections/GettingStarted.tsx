@@ -23,7 +23,7 @@ export function GettingStarted({ copy }: { copy: Dictionary['start'] }) {
               </div>
               <ol className="setup-commands">
                 {[
-                  'git clone https://github.com/GrehBan/aiollm.git',
+                  'git clone https://github.com/aiollm-org/aiollm.git',
                   'cd aiollm',
                   'uv sync',
                 ].map((command) => (
