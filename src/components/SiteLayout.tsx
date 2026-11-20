@@ -40,7 +40,7 @@ export function Header({
           </a>
           <a
             className="gh inline-flex items-center gap-1.5"
-            href="https://github.com/GrehBan/aiollm"
+            href="https://github.com/aiollm-org/aiollm"
             aria-label={copy.github}
           >
             <GitHubIcon />
@@ -70,7 +70,7 @@ export function Footer({ copy }: { copy: Dictionary['nav'] }) {
           <a href={`${project.docs}reference/`}>{copy.apiReference}</a>
           <a href={`${project.docs}changelog/`}>{copy.changelog}</a>
           <a href={`${project.docs}contributing/`}>{copy.contributing}</a>
-          <a href="https://github.com/GrehBan/aiollm">GitHub</a>
+          <a href="https://github.com/aiollm-org/aiollm">GitHub</a>
         </nav>
         <small>
           aiollm {project.version} · {copy.license}

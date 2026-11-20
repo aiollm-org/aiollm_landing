@@ -2,7 +2,7 @@
 export const project = {
   version: '0.10.0',
   python: '3.13+',
-  repository: 'https://github.com/GrehBan/aiollm',
+  repository: 'https://github.com/aiollm-org/aiollm',
   landing: 'https://aiollm.dev',
   docs: 'https://docs.aiollm.dev/',
   reviewedOn: '2026-11-07',

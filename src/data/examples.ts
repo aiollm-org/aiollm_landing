@@ -35,7 +35,7 @@ export const providerExample =
   'from typing import Any\n\nfrom aiollm import GenerationResponse, IGenerationClient\n\n\nasync def summarize(\n    client: IGenerationClient,  # OpenAI, Anthropic, yours\n    model: str,  # choose a model for this provider\n    text: str,\n) -> GenerationResponse[Any]:\n    return await client.generation.create(\n        model=model,\n        input=text,\n        instructions="Summarize in two sentences",\n        max_output_tokens=200,\n        timeout=30,\n    )';
 
 export const installCommand =
-  'pip install git+https://github.com/GrehBan/aiollm.git';
+  'pip install git+https://github.com/aiollm-org/aiollm.git';
 
 export const structuredExample = `from typing import Any
 
